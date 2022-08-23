@@ -5,12 +5,8 @@ const blacklistedHosts = [
   'rinkeby.infura.io',
   'ropsten.infura.io',
   'arbitrum-mainnet.infura.io',
-  'bsc-dataseed.binance.org',
-  'api.avax.network',
   'optimism-mainnet.infura.io',
   'polygon-mainnet.infura.io',
-  'api.harmony.one',
-  'palm-mainnet.infura.io',
 ];
 
 async function setupMocking(server, testSpecificMock) {

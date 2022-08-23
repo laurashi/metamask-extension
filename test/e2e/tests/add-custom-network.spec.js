@@ -45,11 +45,11 @@ describe('Custom network', function () {
           tag: 'button',
           text: 'Add',
         });
-        const addButtons = await driver.findElements({
+
+        await driver.clickElement({
           tag: 'button',
           text: 'Add',
         });
-        addButtons[0].click();
 
         // verify network details
         const title = await driver.findElement({
@@ -146,11 +146,10 @@ describe('Custom network', function () {
           tag: 'button',
           text: 'Add',
         });
-        const addButtons = await driver.findElements({
+        await driver.clickElement({
           tag: 'button',
           text: 'Add',
         });
-        addButtons[0].click();
 
         await driver.clickElement({ tag: 'button', text: 'Approve' });
 
