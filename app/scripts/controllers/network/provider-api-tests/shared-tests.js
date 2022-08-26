@@ -270,7 +270,15 @@ export function testsForRpcMethodThatDoesNotSupportParams(method) {
                   capturedRejectionValue = rejectionValue;
                 });
 
-              while (nock.pendingMocks().length > 0) {
+              // ESLint complains that capturedResolutionValue and
+              // capturedRejectionValue don't change during the loop, but thanks
+              // to the magic of asynchronicity, they do
+              while (
+                /* eslint-disable-next-line no-unmodified-loop-condition */
+                capturedResolutionValue === undefined &&
+                /* eslint-disable-next-line no-unmodified-loop-condition */
+                capturedRejectionValue === undefined
+              ) {
                 clock.runAll();
                 await new Promise((resolve) =>
                   originalSetTimeout(
@@ -330,7 +338,15 @@ export function testsForRpcMethodThatDoesNotSupportParams(method) {
                   capturedRejectionValue = rejectionValue;
                 });
 
-              while (nock.pendingMocks().length > 0) {
+              // ESLint complains that capturedResolutionValue and
+              // capturedRejectionValue don't change during the loop, but thanks
+              // to the magic of asynchronicity, they do
+              while (
+                /* eslint-disable-next-line no-unmodified-loop-condition */
+                capturedResolutionValue === undefined &&
+                /* eslint-disable-next-line no-unmodified-loop-condition */
+                capturedRejectionValue === undefined
+              ) {
                 clock.runAll();
                 await new Promise((resolve) =>
                   originalSetTimeout(
@@ -400,7 +416,15 @@ export function testsForRpcMethodThatDoesNotSupportParams(method) {
                   capturedRejectionValue = rejectionValue;
                 });
 
-              while (nock.pendingMocks().length > 0) {
+              // ESLint complains that capturedResolutionValue and
+              // capturedRejectionValue don't change during the loop, but thanks
+              // to the magic of asynchronicity, they do
+              while (
+                /* eslint-disable-next-line no-unmodified-loop-condition */
+                capturedResolutionValue === undefined &&
+                /* eslint-disable-next-line no-unmodified-loop-condition */
+                capturedRejectionValue === undefined
+              ) {
                 clock.runAll();
                 await new Promise((resolve) =>
                   originalSetTimeout(
@@ -419,7 +443,7 @@ export function testsForRpcMethodThatDoesNotSupportParams(method) {
 
           expect(result).toStrictEqual('the result');
         });
-      }, 10000);
+      });
 
       it(`causes a request to fail with a custom error if an "${errorMessagePrefix}" error is thrown while making the request to Infura 5 times in a row`, async () => {
         await mockingInfuraCommunications(async (comms) => {
@@ -457,7 +481,15 @@ export function testsForRpcMethodThatDoesNotSupportParams(method) {
                   capturedRejectionValue = rejectionValue;
                 });
 
-              while (nock.pendingMocks().length > 0) {
+              // ESLint complains that capturedResolutionValue and
+              // capturedRejectionValue don't change during the loop, but thanks
+              // to the magic of asynchronicity, they do
+              while (
+                /* eslint-disable-next-line no-unmodified-loop-condition */
+                capturedResolutionValue === undefined &&
+                /* eslint-disable-next-line no-unmodified-loop-condition */
+                capturedRejectionValue === undefined
+              ) {
                 clock.runAll();
                 await new Promise((resolve) =>
                   originalSetTimeout(
@@ -1123,7 +1155,12 @@ export function testsForRpcMethodThatSupportsMultipleParams(
                     capturedRejectionValue = rejectionValue;
                   });
 
-                while (nock.pendingMocks().length > 0) {
+                while (
+                  /* eslint-disable-next-line no-unmodified-loop-condition */
+                  capturedResolutionValue === undefined &&
+                  /* eslint-disable-next-line no-unmodified-loop-condition */
+                  capturedRejectionValue === undefined
+                ) {
                   clock.runAll();
                   await new Promise((resolve) =>
                     originalSetTimeout(
@@ -1197,7 +1234,12 @@ export function testsForRpcMethodThatSupportsMultipleParams(
                     capturedRejectionValue = rejectionValue;
                   });
 
-                while (nock.pendingMocks().length > 0) {
+                while (
+                  /* eslint-disable-next-line no-unmodified-loop-condition */
+                  capturedResolutionValue === undefined &&
+                  /* eslint-disable-next-line no-unmodified-loop-condition */
+                  capturedRejectionValue === undefined
+                ) {
                   clock.runAll();
                   await new Promise((resolve) =>
                     originalSetTimeout(
@@ -1292,7 +1334,12 @@ export function testsForRpcMethodThatSupportsMultipleParams(
                       capturedRejectionValue = rejectionValue;
                     });
 
-                  while (nock.pendingMocks().length > 0) {
+                  while (
+                    /* eslint-disable-next-line no-unmodified-loop-condition */
+                    capturedResolutionValue === undefined &&
+                    /* eslint-disable-next-line no-unmodified-loop-condition */
+                    capturedRejectionValue === undefined
+                  ) {
                     clock.runAll();
                     await new Promise((resolve) =>
                       originalSetTimeout(
@@ -1363,7 +1410,12 @@ export function testsForRpcMethodThatSupportsMultipleParams(
                       capturedRejectionValue = rejectionValue;
                     });
 
-                  while (nock.pendingMocks().length > 0) {
+                  while (
+                    /* eslint-disable-next-line no-unmodified-loop-condition */
+                    capturedResolutionValue === undefined &&
+                    /* eslint-disable-next-line no-unmodified-loop-condition */
+                    capturedRejectionValue === undefined
+                  ) {
                     clock.runAll();
                     await new Promise((resolve) =>
                       originalSetTimeout(

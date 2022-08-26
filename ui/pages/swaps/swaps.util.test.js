@@ -49,7 +49,7 @@ jest.mock('../../helpers/utils/storage-helpers.js', () => ({
 }));
 
 describe('Swaps Util', () => {
-  afterAll(() => {
+  afterEach(() => {
     nock.cleanAll();
   });
 
@@ -119,7 +119,7 @@ describe('Swaps Util', () => {
   });
 
   describe('fetchTokens', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       nock('https://swap.metaswap.codefi.network')
         .persist()
         .get('/networks/1/tokens')
@@ -138,7 +138,7 @@ describe('Swaps Util', () => {
   });
 
   describe('fetchAggregatorMetadata', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       nock('https://swap.metaswap.codefi.network')
         .persist()
         .get('/networks/1/aggregatorMetadata')
@@ -157,7 +157,7 @@ describe('Swaps Util', () => {
   });
 
   describe('fetchTopAssets', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       nock('https://swap.metaswap.codefi.network')
         .persist()
         .get('/networks/1/topAssets')

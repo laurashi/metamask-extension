@@ -66,7 +66,7 @@ describe('createInfuraClient', () => {
   // geth-specific "nil", but additionally a result that has a `blockHash` that
   // is not 0x0.
 
-  describe.only('eth_blockNumber', () => {
+  describe('eth_blockNumber', () => {
     testsForRpcMethodThatDoesNotSupportParams('eth_blockNumber');
   });
 
