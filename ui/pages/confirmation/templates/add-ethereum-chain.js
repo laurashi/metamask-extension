@@ -15,6 +15,7 @@ import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
 
 import fetchWithCache from '../../../helpers/utils/fetch-with-cache';
 import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
+import { getURL } from 'ui/helpers/utils/util';
 
 const UNRECOGNIZED_CHAIN = {
   id: 'UNRECOGNIZED_CHAIN',
@@ -129,8 +130,8 @@ async function getAlerts(pendingApproval) {
       alerts.push(MISMATCHED_NETWORK_SYMBOL);
     }
 
-    const { origin } = new URL(pendingApproval.requestData.rpcUrl);
-    if (!matchedChain.rpc.map((rpc) => new URL(rpc).origin).includes(origin)) {
+    const { origin } = getURL(pendingApproval.requestData.rpcUrl);
+    if (!matchedChain.rpc.map((rpc) => getURL(rpc).origin).includes(origin)) {
       alerts.push(MISMATCHED_NETWORK_RPC);
     }
   }

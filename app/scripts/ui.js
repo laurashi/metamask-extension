@@ -23,6 +23,7 @@ import ExtensionPlatform from './platforms/extension';
 import { setupMultiplex } from './lib/stream-utils';
 import { getEnvironmentType } from './lib/util';
 import metaRPCClientFactory from './lib/metaRPCClientFactory';
+import { getURL } from 'ui/helpers/utils/util';
 
 const container = document.getElementById('app-content');
 
@@ -146,7 +147,7 @@ async function queryCurrentActiveTab(windowType) {
     browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
       const [activeTab] = tabs;
       const { id, title, url } = activeTab;
-      const { origin, protocol } = url ? new URL(url) : {};
+      const { origin, protocol } = url ? getURL(url) : {};
 
       if (!origin || origin === 'null') {
         resolve({});

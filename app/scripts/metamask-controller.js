@@ -154,6 +154,7 @@ import {
   ///: END:ONLY_INCLUDE_IN
 } from './controllers/permissions';
 import createRPCMethodTrackingMiddleware from './lib/createRPCMethodTrackingMiddleware';
+import { getURL } from 'ui/helpers/utils/util';
 
 export const METAMASK_CONTROLLER_EVENTS = {
   // Fired after state changes that impact the extension badge (unapproved msg count)
@@ -648,7 +649,7 @@ export default class MetamaskController extends EventEmitter {
 
     ///: BEGIN:ONLY_INCLUDE_IN(flask)
     this.snapExecutionService = new IframeExecutionService({
-      iframeUrl: new URL(
+      iframeUrl: getURL(
         'https://metamask.github.io/iframe-execution-environment/0.7.0',
       ),
       messenger: this.controllerMessenger.getRestricted({
@@ -2108,11 +2109,7 @@ export default class MetamaskController extends EventEmitter {
     );
 
     let rpcUrlOrigin;
-    try {
-      rpcUrlOrigin = new URL(rpcUrl).origin;
-    } catch {
-      // ignore
-    }
+    rpcUrlOrigin = getURL(rpcUrl).origin;
     this.metaMetricsController.trackEvent({
       event: 'Custom Network Added',
       category: EVENT.CATEGORIES.NETWORK,
@@ -3398,7 +3395,7 @@ export default class MetamaskController extends EventEmitter {
     }
 
     if (sender.url) {
-      const { hostname } = new URL(sender.url);
+      const { hostname } = getURL(sender.url);
       // Check if new connection is blocked if phishing detection is on
       const phishingTestResponse = this.phishingController.test(hostname);
       if (usePhishDetect && phishingTestResponse?.result) {
@@ -3549,7 +3546,7 @@ export default class MetamaskController extends EventEmitter {
     }
     ///: END:ONLY_INCLUDE_IN
     else {
-      origin = new URL(sender.url).origin;
+      origin = getURL(sender.url).origin;
     }
 
     if (sender.id && sender.id !== this.extension.runtime.id) {

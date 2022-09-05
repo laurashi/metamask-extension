@@ -1,4 +1,5 @@
 const http = require('http');
+const { getURL } = require('ui/helpers/utils/util');
 
 const PORT = 8889;
 
@@ -42,7 +43,7 @@ class ThreeboxMockServer {
         response.end('ok');
       });
     } else if (request.method === 'GET') {
-      const key = new URL(request.url, 'https://example.org/').searchParams.get(
+      const key = getURL(request.url, 'https://example.org/').searchParams.get(
         'key',
       );
 
