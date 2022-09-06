@@ -112,7 +112,7 @@
     "@babel/runtime": "^7.5.5",
     "@download/blockies": "^1.0.3",
     "@ensdomains/content-hash": "^2.5.6",
-    "@eth-optimism/contracts": "0.0.0-2021919175625",
+    "@eth-optimism/contracts": "^0.5.33",
     "@ethereumjs/common": "^2.3.1",
     "@ethereumjs/tx": "^3.2.1",
     "@ethersproject/abi": "^5.6.4",
