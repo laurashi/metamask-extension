@@ -242,23 +242,14 @@ export default function ContractDetailsModal({
         paddingRight={4}
         paddingBottom={6}
         paddingLeft={4}
-        className="contract-details-modal__footer"
       >
-        <Button
-          type="secondary"
-          onClick={() => {
-            onClose();
-          }}
-        >
-          {t('cancel')}
-        </Button>
         <Button
           type="primary"
           onClick={() => {
             onClose();
           }}
         >
-          {t('confirm')}
+          {t('gotItModal')}
         </Button>
       </Box>
     </Popover>
