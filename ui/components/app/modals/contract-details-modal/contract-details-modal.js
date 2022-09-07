@@ -169,6 +169,7 @@ export default function ContractDetailsModal({
         >
           <UrlIcon
             className="contract-details-modal__content__contract__identicon"
+            fallbackClassName="contract-details-modal__content__contract__identicon"
             name={origin}
             url={siteImage}
           />
