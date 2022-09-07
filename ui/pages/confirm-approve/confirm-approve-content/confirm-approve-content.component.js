@@ -35,6 +35,7 @@ import {
   MAINNET_CHAIN_ID,
   TEST_CHAINS,
 } from '../../../../shared/constants/network';
+import ContractDetailsModal from '../../../components/app/modals/contract-details-modal/contract-details-modal';
 
 export default class ConfirmApproveContent extends Component {
   static contextTypes = {
@@ -85,6 +86,7 @@ export default class ConfirmApproveContent extends Component {
   state = {
     showFullTxDetails: false,
     copied: false,
+    setshowContractDetails: false,
   };
 
   renderApproveContentCard({
@@ -590,8 +592,10 @@ export default class ConfirmApproveContent extends Component {
       isContract,
       assetStandard,
       userAddress,
+      isSetApproveForAll,
+      tokenAddress,
     } = this.props;
-    const { showFullTxDetails } = this.state;
+    const { showFullTxDetails, setshowContractDetails } = this.state;
 
     return (
       <div
@@ -634,6 +638,31 @@ export default class ConfirmApproveContent extends Component {
         <div className="confirm-approve-content__description">
           {this.renderDescription()}
         </div>
+        {isSetApproveForAll && (
+          <Box>
+            <Button
+              type="link"
+              className="confirm-approve-content__verify-contract-details"
+              onClick={() => this.setState({ setshowContractDetails: true })}
+            >
+              {t('verifyContractDetails')}
+            </Button>
+            {setshowContractDetails && (
+              <ContractDetailsModal
+                onClose={() => this.setState({ setshowContractDetails: false })}
+                tokenSymbol={tokenSymbol}
+                tokenAddress={tokenAddress}
+                siteImage={siteImage}
+                toAddress={toAddress}
+                origin={origin}
+                chainId={chainId}
+                userAddress={userAddress}
+                contractTitle={t('contractNFT')}
+                contractRequesting={t('contractRequestingAccess')}
+              />
+            )}
+          </Box>
+        )}
         <Box className="confirm-approve-content__address-display-content">
           <Box display={DISPLAY.FLEX}>
             <Identicon

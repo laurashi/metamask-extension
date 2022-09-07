@@ -759,6 +759,12 @@
   "contractInteraction": {
     "message": "Contract interaction"
   },
+  "contractNFT": {
+    "message": "NFT contract"
+  },
+  "contractRequestingAccess": {
+    "message": "Contract requesting access"
+  },
   "contractRequestingSpendingCap": {
     "message": "Contract requesting spending cap"
   },
@@ -4174,6 +4180,9 @@
   },
   "userName": {
     "message": "Username"
+  },
+  "verifyContractDetails": {
+    "message": "Verify contract details"
   },
   "verifyThisTokenDecimalOn": {
     "message": "Token decimal can be found on $1",

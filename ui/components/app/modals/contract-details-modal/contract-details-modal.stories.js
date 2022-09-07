@@ -12,20 +12,50 @@ export default {
     onOpenPopover: {
       action: 'Open Contract Details',
     },
-    tokenName: {
+    tokenSymbol: {
       control: {
         type: 'text',
       },
     },
-    address: {
+    tokenAddress: {
+      control: {
+        type: 'text',
+      },
+    },
+    siteImage: {
+      control: {
+        type: 'text',
+      },
+    },
+    toAddress: {
+      control: {
+        type: 'text',
+      },
+    },
+    origin: {
+      control: {
+        type: 'text',
+      },
+    },
+    contractTitle: {
+      control: {
+        type: 'text',
+      },
+    },
+    contractRequesting: {
       control: {
         type: 'text',
       },
     },
   },
   args: {
-    tokenName: 'DAI',
-    address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+    tokenSymbol: 'DAI',
+    tokenAddress: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+    siteImage: 'https://metamask.github.io/test-dapp/metamask-fox.svg',
+    toAddress: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984',
+    origin: 'https://metamask.github.io',
+    contractTitle: 'Token contract',
+    contractRequesting: 'Contract requesting spending cap',
   },
 };
 

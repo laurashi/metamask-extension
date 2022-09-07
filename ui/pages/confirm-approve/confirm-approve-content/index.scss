@@ -337,6 +337,12 @@
     color: var(--color-primary-default);
   }
 
+  &__verify-contract-details {
+    @include H6;
+
+    color: var(--color-primary-default);
+  }
+
   &__info-row {
     display: flex;
     justify-content: space-between;
