@@ -36,7 +36,6 @@ import {
 export default class ConfirmPageContainer extends Component {
   state = {
     showNicknamePopovers: false,
-    tokenStandard: '',
   };
 
   static contextTypes = {
@@ -56,8 +55,7 @@ export default class ConfirmPageContainer extends Component {
     hideSenderToRecipient: PropTypes.bool,
     showAccountInHeader: PropTypes.bool,
     accountBalance: PropTypes.string,
-    txTokenAddress: PropTypes.string,
-    getTokenStandardAndDetails: PropTypes.func,
+    assetStandard: PropTypes.string,
     // Sender to Recipient
     fromAddress: PropTypes.string,
     fromName: PropTypes.string,
@@ -106,13 +104,6 @@ export default class ConfirmPageContainer extends Component {
     showBuyModal: PropTypes.func,
     isBuyableChain: PropTypes.bool,
   };
-
-  async componentDidMount() {
-    const { standard } = await this.props.getTokenStandardAndDetails(
-      this.props.txTokenAddress,
-    );
-    this.setState({ tokenStandard: standard });
-  }
 
   render() {
     const {
@@ -169,6 +160,7 @@ export default class ConfirmPageContainer extends Component {
       isBuyableChain,
       networkIdentifier,
       accountBalance,
+      assetStandard,
     } = this.props;
 
     const showAddToAddressDialog =
@@ -209,7 +201,7 @@ export default class ConfirmPageContainer extends Component {
             ofText={ofText}
             requestsWaitingText={requestsWaitingText}
           />
-          {this.state.tokenStandard === ERC721 &&
+          {assetStandard === ERC721 &&
           (isSetApproveForAll || isSetNftApprove) ? (
             <NetworkAccountBalanceHeader
               accountName={fromName}
