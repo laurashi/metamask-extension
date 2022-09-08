@@ -25,7 +25,7 @@ import {
 import { IMPORT_TOKEN_ROUTE } from '../../../helpers/constants/routes';
 import Chip from '../chip/chip';
 import { setFirstTimeUsedNetwork } from '../../../store/actions';
-import { NETWORK_TYPES } from 'shared/constants/network';
+import { NETWORK_TYPES } from '../../../../shared/constants/network';
 
 const NewNetworkInfo = () => {
   const t = useContext(I18nContext);
@@ -92,7 +92,7 @@ const NewNetworkInfo = () => {
         backgroundColor={COLORS.BACKGROUND_ALTERNATIVE}
         maxContent={false}
         label={
-          currentProvider.type === NETWORK_TYPES.RPC
+          currentProvider.type === NETWORK_TYPES
             ? currentProvider.nickname ?? t('privateNetwork')
             : t(currentProvider.type)
         }
