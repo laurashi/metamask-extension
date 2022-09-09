@@ -8,12 +8,15 @@ import LedgerInstructionField from '../ledger-instruction-field';
 import { MESSAGE_TYPE } from '../../../../shared/constants/app';
 import { EVENT } from '../../../../shared/constants/metametrics';
 import { getURLHostName } from '../../../helpers/utils/util';
-import Identicon from '../../ui/identicon';
-import AccountListItem from '../account-list-item';
 import { conversionUtil } from '../../../../shared/modules/conversion.utils';
 import Button from '../../ui/button';
-import SiteIcon from '../../ui/site-icon';
 import SiteOrigin from '../../ui/site-origin';
+import NetworkAccountBalanceHeader from '../network-account-balance-header';
+import Typography from '../../ui/typography/typography';
+import {
+  TYPOGRAPHY,
+  FONT_WEIGHT,
+} from '../../../helpers/constants/design-system';
 
 export default class SignatureRequestOriginal extends Component {
   static contextTypes = {
@@ -32,7 +35,6 @@ export default class SignatureRequestOriginal extends Component {
     conversionRate: PropTypes.number,
     history: PropTypes.object.isRequired,
     mostRecentOverviewPage: PropTypes.string.isRequired,
-    requesterAddress: PropTypes.string,
     sign: PropTypes.func.isRequired,
     txData: PropTypes.object.isRequired,
     subjectMetadata: PropTypes.object,
@@ -42,6 +44,7 @@ export default class SignatureRequestOriginal extends Component {
     messagesCount: PropTypes.number,
     showRejectTransactionsConfirmationModal: PropTypes.func.isRequired,
     cancelAll: PropTypes.func.isRequired,
+    currentNetwork: PropTypes.string,
   };
 
   state = {
@@ -49,41 +52,9 @@ export default class SignatureRequestOriginal extends Component {
   };
 
   renderHeader = () => {
-    return (
-      <div className="request-signature__header">
-        <div className="request-signature__header-background" />
-
-        <div className="request-signature__header__text">
-          {this.context.t('sigRequest')}
-        </div>
-
-        <div className="request-signature__header__tip-container">
-          <div className="request-signature__header__tip" />
-        </div>
-      </div>
-    );
-  };
-
-  renderAccount = () => {
-    const { fromAccount } = this.state;
-
-    return (
-      <div className="request-signature__account">
-        <div className="request-signature__account-text">
-          {`${this.context.t('account')}:`}
-        </div>
-
-        <div className="request-signature__account-item">
-          <AccountListItem account={fromAccount} />
-        </div>
-      </div>
-    );
-  };
-
-  renderBalance = () => {
-    const { conversionRate, nativeCurrency } = this.props;
+    const { conversionRate, nativeCurrency, currentNetwork } = this.props;
     const {
-      fromAccount: { balance },
+      fromAccount: { address, balance, name },
     } = this.state;
 
     const balanceInBaseAsset = conversionUtil(balance, {
@@ -95,64 +66,13 @@ export default class SignatureRequestOriginal extends Component {
     });
 
     return (
-      <div className="request-signature__balance">
-        <div className="request-signature__balance-text">
-          {`${this.context.t('balance')}:`}
-        </div>
-        <div className="request-signature__balance-value">
-          {`${balanceInBaseAsset} ${nativeCurrency}`}
-        </div>
-      </div>
-    );
-  };
-
-  renderRequestIcon = () => {
-    const { requesterAddress } = this.props;
-
-    return (
-      <div className="request-signature__request-icon">
-        <Identicon diameter={40} address={requesterAddress} />
-      </div>
-    );
-  };
-
-  renderAccountInfo = () => {
-    return (
-      <div className="request-signature__account-info">
-        {this.renderAccount()}
-        {this.renderRequestIcon()}
-        {this.renderBalance()}
-      </div>
-    );
-  };
-
-  renderOriginInfo = () => {
-    const { txData, subjectMetadata } = this.props;
-    const { t } = this.context;
-
-    const targetSubjectMetadata = txData.msgParams.origin
-      ? subjectMetadata?.[txData.msgParams.origin]
-      : null;
-
-    return (
-      <div className="request-signature__origin-row">
-        <div className="request-signature__origin-label">
-          {`${t('origin')}:`}
-        </div>
-        {targetSubjectMetadata?.iconUrl ? (
-          <SiteIcon
-            className="request-signature__origin-icon"
-            icon={targetSubjectMetadata.iconUrl}
-            name={
-              getURLHostName(targetSubjectMetadata.origin) ||
-              targetSubjectMetadata.origin
-            }
-            size={24}
-          />
-        ) : null}
-        <SiteOrigin
-          className="request-signature__origin"
-          siteOrigin={txData.msgParams.origin}
+      <div className="request-signature__account">
+        <NetworkAccountBalanceHeader
+          networkName={currentNetwork}
+          accountName={name}
+          accountBalance={balanceInBaseAsset}
+          tokenName={nativeCurrency}
+          accountAddress={address}
         />
       </div>
     );
@@ -197,7 +117,7 @@ export default class SignatureRequestOriginal extends Component {
     let rows;
     let notice = `${this.context.t('youSign')}:`;
 
-    const { txData } = this.props;
+    const { txData, subjectMetadata } = this.props;
     const {
       type,
       msgParams: { data },
@@ -214,10 +134,32 @@ export default class SignatureRequestOriginal extends Component {
       notice = this.context.t('signNotice');
     }
 
+    const targetSubjectMetadata = txData.msgParams.origin
+      ? subjectMetadata?.[txData.msgParams.origin]
+      : null;
+
     return (
       <div className="request-signature__body">
-        {this.renderAccountInfo()}
-        {this.renderOriginInfo()}
+        <div className="request-signature__origin">
+          <SiteOrigin
+            siteOrigin={txData.msgParams.origin}
+            iconSrc={targetSubjectMetadata?.iconUrl}
+            iconName={
+              getURLHostName(targetSubjectMetadata?.origin) ||
+              targetSubjectMetadata?.origin
+            }
+            chip
+          />
+        </div>
+
+        <Typography
+          className="request-signature__header__text"
+          variant={TYPOGRAPHY.H3}
+          fontWeight={FONT_WEIGHT.BOLD}
+        >
+          {this.context.t('sigRequest')}
+        </Typography>
+
         <div
           className={classnames('request-signature__notice', {
             'request-signature__warning': type === MESSAGE_TYPE.ETH_SIGN,

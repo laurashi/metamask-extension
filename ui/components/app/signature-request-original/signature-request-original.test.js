@@ -52,6 +52,10 @@ describe('SignatureRequestOriginal', () => {
         },
         type: MESSAGE_TYPE.ETH_SIGN,
       },
+      subjectMetadata: {
+        origin: 'https://happydapp.website/governance?futarchy=true',
+        iconUrl: '',
+      },
     };
 
     const { container } = renderWithProvider(

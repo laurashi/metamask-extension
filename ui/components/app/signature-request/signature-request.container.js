@@ -2,8 +2,12 @@ import { connect } from 'react-redux';
 import {
   accountsWithSendEtherInfoSelector,
   doesAddressRequireLedgerHidConnection,
+  conversionRateSelector,
 } from '../../../selectors';
-import { isAddressLedger } from '../../../ducks/metamask/metamask';
+import {
+  isAddressLedger,
+  getNativeCurrency,
+} from '../../../ducks/metamask/metamask';
 import { getAccountByAddress } from '../../../helpers/utils/util';
 import { MESSAGE_TYPE } from '../../../../shared/constants/app';
 import SignatureRequest from './signature-request.component';
@@ -16,18 +20,29 @@ function mapStateToProps(state, ownProps) {
   const hardwareWalletRequiresConnection =
     doesAddressRequireLedgerHidConnection(state, from);
   const isLedgerWallet = isAddressLedger(state, from);
+  const currentNetwork =
+    state.metamask.provider.nickname || state.metamask.provider.ticker;
 
   return {
     isLedgerWallet,
     hardwareWalletRequiresConnection,
     // not forwarded to component
     allAccounts: accountsWithSendEtherInfoSelector(state),
+    conversionRate: conversionRateSelector(state),
+    nativeCurrency: getNativeCurrency(state),
+    currentNetwork,
   };
 }
 
 function mergeProps(stateProps, dispatchProps, ownProps) {
-  const { allAccounts, isLedgerWallet, hardwareWalletRequiresConnection } =
-    stateProps;
+  const {
+    allAccounts,
+    isLedgerWallet,
+    hardwareWalletRequiresConnection,
+    conversionRate,
+    nativeCurrency,
+    currentNetwork,
+  } = stateProps;
   const {
     signPersonalMessage,
     signTypedMessage,
@@ -68,6 +83,9 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
     sign,
     isLedgerWallet,
     hardwareWalletRequiresConnection,
+    conversionRate,
+    nativeCurrency,
+    currentNetwork,
   };
 }
 

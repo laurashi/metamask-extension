@@ -31,6 +31,8 @@ function mapStateToProps(state, ownProps) {
   const isLedgerWallet = isAddressLedger(state, from);
   const messagesList = unconfirmedMessagesHashSelector(state);
   const messagesCount = getTotalUnapprovedMessagesCount(state);
+  const currentNetwork =
+    state.metamask.provider.nickname || state.metamask.provider.ticker;
 
   return {
     requester: null,
@@ -45,6 +47,7 @@ function mapStateToProps(state, ownProps) {
     subjectMetadata: getSubjectMetadata(state),
     messagesList,
     messagesCount,
+    currentNetwork,
   };
 }
 

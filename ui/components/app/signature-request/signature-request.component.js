@@ -1,11 +1,16 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Identicon from '../../ui/identicon';
 import LedgerInstructionField from '../ledger-instruction-field';
-import { sanitizeMessage } from '../../../helpers/utils/util';
+import { sanitizeMessage, getURLHostName } from '../../../helpers/utils/util';
 import { EVENT } from '../../../../shared/constants/metametrics';
+import { conversionUtil } from '../../../../shared/modules/conversion.utils';
 import SiteOrigin from '../../ui/site-origin';
-import Header from './signature-request-header';
+import Typography from '../../ui/typography/typography';
+import {
+  TYPOGRAPHY,
+  FONT_WEIGHT,
+} from '../../../helpers/constants/design-system';
+import NetworkAccountBalanceHeader from '../network-account-balance-header';
 import Footer from './signature-request-footer';
 import Message from './signature-request-message';
 
@@ -39,6 +44,9 @@ export default class SignatureRequest extends PureComponent {
      * Whether the hardware wallet requires a connection disables the sign button if true.
      */
     hardwareWalletRequiresConnection: PropTypes.bool.isRequired,
+    conversionRate: PropTypes.number,
+    nativeCurrency: PropTypes.string,
+    currentNetwork: PropTypes.string,
   };
 
   static contextTypes = {
@@ -61,11 +69,38 @@ export default class SignatureRequest extends PureComponent {
     )}`;
   }
 
+  renderHeader = () => {
+    const { conversionRate, nativeCurrency, currentNetwork } = this.props;
+    const {
+      fromAccount: { address, balance, name },
+    } = this.props;
+
+    const balanceInBaseAsset = conversionUtil(balance, {
+      fromNumericBase: 'hex',
+      toNumericBase: 'dec',
+      fromDenomination: 'WEI',
+      numberOfDecimals: 6,
+      conversionRate,
+    });
+
+    return (
+      <div className="request-signature__account">
+        <NetworkAccountBalanceHeader
+          networkName={currentNetwork}
+          accountName={name}
+          accountBalance={balanceInBaseAsset}
+          tokenName={nativeCurrency}
+          accountAddress={address}
+        />
+      </div>
+    );
+  };
+
   render() {
     const {
       fromAccount,
       txData: {
-        msgParams: { data, origin, version },
+        msgParams: { data, origin, version, iconUrl },
         type,
       },
       cancel,
@@ -110,18 +145,24 @@ export default class SignatureRequest extends PureComponent {
 
     return (
       <div className="signature-request page-container">
-        <Header fromAccount={fromAccount} />
+        {this.renderHeader()}
         <div className="signature-request-content">
-          <div className="signature-request-content__title">
+          <div className="request-signature__origin">
+            <SiteOrigin
+              siteOrigin={origin}
+              iconSrc={iconUrl}
+              iconName={getURLHostName(origin) || origin}
+              chip
+            />
+          </div>
+
+          <Typography
+            className="request-signature__header__text"
+            variant={TYPOGRAPHY.H3}
+            fontWeight={FONT_WEIGHT.BOLD}
+          >
             {this.context.t('sigRequest')}
-          </div>
-          <div className="signature-request-content__identicon-container">
-            <div className="signature-request-content__identicon-initial">
-              {domain.name && domain.name[0]}
-            </div>
-            <div className="signature-request-content__identicon-border" />
-            <Identicon address={fromAddress} diameter={70} />
-          </div>
+          </Typography>
           <div className="signature-request-content__info--bolded">
             {domain.name}
           </div>
