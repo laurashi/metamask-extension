@@ -41,7 +41,6 @@ const ACK_KEEP_ALIVE_RECEIVED = {};
  */
 if (isManifestV3) {
   const handle = setInterval(() => {
-    console.log('ACK_KEEP_ALIVE_RECEIVED', ACK_KEEP_ALIVE_RECEIVED);
     const messageId = new Date().getTime() + Math.random();
     ACK_KEEP_ALIVE_RECEIVED[messageId] = false;
     browser.runtime.sendMessage({ name: WORKER_KEEP_ALIVE_MESSAGE });
@@ -60,7 +59,6 @@ if (isManifestV3) {
           new Error("Something's gone wrong. Try reloading the page."),
         );
       }
-      console.log('ACK_KEEP_ALIVE_RECEIVED', ACK_KEEP_ALIVE_RECEIVED);
     }, ACK_KEEP_ALIVE_WAIT_TIME);
 
     // add listener to receive ACK_KEEP_ALIVE_MESSAGE
