@@ -26,8 +26,12 @@ import metaRPCClientFactory from './lib/metaRPCClientFactory';
 
 const container = document.getElementById('app-content');
 
-const WORKER_KEEP_ALIVE_INTERVAL = 1000;
+// Service Worker Keep Alive Message Constants
+const WORKER_KEEP_ALIVE_INTERVAL = 1_000;
 const WORKER_KEEP_ALIVE_MESSAGE = 'WORKER_KEEP_ALIVE_MESSAGE';
+const ACK_KEEP_ALIVE_WAIT_TIME = 60_000; // 1 minute
+const ACK_KEEP_ALIVE_MESSAGE = 'ACK_KEEP_ALIVE_MESSAGE';
+const ACK_KEEP_ALIVE_RECEIVED = {};
 
 /*
  * As long as UI is open it will keep sending messages to service worker
@@ -36,8 +40,38 @@ const WORKER_KEEP_ALIVE_MESSAGE = 'WORKER_KEEP_ALIVE_MESSAGE';
  * Time has been kept to 1000ms but can be reduced for even faster re-activation of service worker
  */
 if (isManifestV3) {
-  setInterval(() => {
+  const handle = setInterval(() => {
+    console.log('ACK_KEEP_ALIVE_RECEIVED', ACK_KEEP_ALIVE_RECEIVED);
+    const messageId = new Date().getTime() + Math.random();
+    ACK_KEEP_ALIVE_RECEIVED[messageId] = false;
     browser.runtime.sendMessage({ name: WORKER_KEEP_ALIVE_MESSAGE });
+
+    /**
+     * set timeout to clear the ACK_KEEP_ALIVE_RECEIVED or
+     * show error if response is not received after ACK_KEEP_ALIVE_WAIT_TIME seconds
+     */
+    const timeoutHandle = setTimeout(() => {
+      if (ACK_KEEP_ALIVE_RECEIVED[messageId]) {
+        delete ACK_KEEP_ALIVE_RECEIVED[messageId];
+      } else {
+        clearInterval(handle);
+        displayCriticalError(
+          'somethingIsWrong',
+          new Error("Something's gone wrong. Try reloading the page."),
+        );
+      }
+      console.log('ACK_KEEP_ALIVE_RECEIVED', ACK_KEEP_ALIVE_RECEIVED);
+    }, ACK_KEEP_ALIVE_WAIT_TIME);
+
+    // add listener to receive ACK_KEEP_ALIVE_MESSAGE
+    // eslint-disable-next-line no-undef
+    const channel = new window.BroadcastChannel('sw-messages');
+    channel.addEventListener('message', (event) => {
+      if (event.data.name === ACK_KEEP_ALIVE_MESSAGE) {
+        clearTimeout(timeoutHandle);
+        delete ACK_KEEP_ALIVE_RECEIVED[messageId];
+      }
+    });
   }, WORKER_KEEP_ALIVE_INTERVAL);
 }
 
@@ -107,7 +141,7 @@ async function start() {
     initializeUi(tab, connectionStream, (err, store) => {
       if (err) {
         // if there's an error, store will be = metamaskState
-        displayCriticalError(err, store);
+        displayCriticalError('troubleStarting', err, store);
         return;
       }
       isUIInitialised = true;
@@ -125,7 +159,7 @@ async function start() {
   function updateUiStreams() {
     connectToAccountManager(connectionStream, (err, backgroundConnection) => {
       if (err) {
-        displayCriticalError(err);
+        displayCriticalError('troubleStarting', err);
         return;
       }
 
@@ -176,8 +210,8 @@ function initializeUi(activeTab, connectionStream, cb) {
   });
 }
 
-async function displayCriticalError(err, metamaskState) {
-  const html = await getErrorHtml(SUPPORT_LINK, metamaskState);
+async function displayCriticalError(errorKey, err, metamaskState) {
+  const html = await getErrorHtml(errorKey, SUPPORT_LINK, metamaskState);
 
   container.innerHTML = html;
 
