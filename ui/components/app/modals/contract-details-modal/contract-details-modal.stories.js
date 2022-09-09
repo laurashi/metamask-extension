@@ -22,17 +22,12 @@ export default {
         type: 'text',
       },
     },
-    siteImage: {
+    userAddress: {
       control: {
         type: 'text',
       },
     },
     toAddress: {
-      control: {
-        type: 'text',
-      },
-    },
-    origin: {
       control: {
         type: 'text',
       },
@@ -51,9 +46,8 @@ export default {
   args: {
     tokenSymbol: 'DAI',
     tokenAddress: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-    siteImage: 'https://metamask.github.io/test-dapp/metamask-fox.svg',
+    userAddress: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984',
     toAddress: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984',
-    origin: 'https://metamask.github.io',
     contractTitle: 'Token contract',
     contractRequesting: 'Contract requesting spending cap',
   },

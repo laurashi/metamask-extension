@@ -21,7 +21,6 @@ import {
   SIZES,
   BORDER_STYLE,
 } from '../../../../helpers/constants/design-system';
-import UrlIcon from '../../../ui/url-icon/url-icon';
 import { useCopyToClipboard } from '../../../../hooks/useCopyToClipboard';
 import { getTokenList } from '../../../../selectors';
 
@@ -29,9 +28,7 @@ export default function ContractDetailsModal({
   onClose,
   tokenSymbol,
   tokenAddress,
-  siteImage,
   toAddress,
-  origin,
   chainId,
   userAddress,
   contractTitle,
@@ -100,6 +97,8 @@ export default function ContractDetailsModal({
                 variant={TYPOGRAPHY.H6}
                 display={DISPLAY.FLEX}
                 color={COLORS.TEXT_ALTERNATIVE}
+                marginTop={0}
+                marginBottom={4}
               >
                 {ellipsify(tokenAddress)}
               </Typography>
@@ -110,10 +109,7 @@ export default function ContractDetailsModal({
             className="contract-details-modal__content__contract__buttons"
           >
             <Box marginTop={4} marginRight={5}>
-              <Tooltip
-                position="top"
-                title={copied ? t('copiedExclamation') : t('copyToClipboard')}
-              >
+              <Tooltip position="top" title={copied || t('copyToClipboard')}>
                 <Button
                   className="contract-details-modal__content__contract__buttons__copy"
                   type="link"
@@ -167,11 +163,10 @@ export default function ContractDetailsModal({
           borderColor={COLORS.BORDER_DEFAULT}
           className="contract-details-modal__content__contract"
         >
-          <UrlIcon
+          <Identicon
             className="contract-details-modal__content__contract__identicon"
-            fallbackClassName="contract-details-modal__content__contract__identicon"
-            name={origin}
-            url={siteImage}
+            address={userAddress}
+            diameter={24}
           />
           <Box data-testid="recipient">
             <Typography
@@ -186,6 +181,8 @@ export default function ContractDetailsModal({
                 variant={TYPOGRAPHY.H6}
                 display={DISPLAY.FLEX}
                 color={COLORS.TEXT_ALTERNATIVE}
+                marginTop={0}
+                marginBottom={4}
               >
                 {ellipsify(toAddress)}
               </Typography>
@@ -196,10 +193,7 @@ export default function ContractDetailsModal({
             className="contract-details-modal__content__contract__buttons"
           >
             <Box marginTop={4} marginRight={5}>
-              <Tooltip
-                position="top"
-                title={copied ? t('copiedExclamation') : t('copyToClipboard')}
-              >
+              <Tooltip position="top" title={copied || t('copyToClipboard')}>
                 <Button
                   className="contract-details-modal__content__contract__buttons__copy"
                   type="link"
@@ -260,9 +254,7 @@ ContractDetailsModal.propTypes = {
   onClose: PropTypes.func,
   tokenSymbol: PropTypes.string,
   tokenAddress: PropTypes.string,
-  siteImage: PropTypes.string,
   toAddress: PropTypes.string,
-  origin: PropTypes.string,
   chainId: PropTypes.string,
   userAddress: PropTypes.string,
   contractTitle: PropTypes.string,
