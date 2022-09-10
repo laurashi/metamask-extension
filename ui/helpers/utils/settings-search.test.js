@@ -187,7 +187,7 @@ describe('Settings Search Utils', () => {
     });
 
     it('should get good network section number', () => {
-      expect(getNumberOfSettingsInSection(t, t('networks'))).toStrictEqual(6);
+      expect(getNumberOfSettingsInSection(t, t('networks'))).toStrictEqual(7);
     });
 
     it('should get good experimental section number', () => {

@@ -121,7 +121,7 @@ describe('Network Dropdown', () => {
     it('shows test networks in the dropdown', () => {
       const networkItems = screen.queryAllByTestId(/network-item/u);
 
-      expect(networkItems).toHaveLength(8);
+      expect(networkItems).toHaveLength(9);
     });
   });
 
