@@ -42,7 +42,61 @@
     "message": "基于二维码的硬件钱包"
   },
   "QRHardwareWalletSteps2Description": {
-    "message": "AirGap Vault & Ngrave (即将上线)"
+    "message": "Ngrave (即将上线)"
+  },
+  "SIWEAddressInvalid": {
+    "message": "登录请求中的地址与您用于登录的账户地址不匹配。"
+  },
+  "SIWEDomainInvalid": {
+    "message": "您尝试登录的网站（$1）与登录请求中的域名不匹配。请谨慎行事。",
+    "description": "$1 represents the website domain"
+  },
+  "SIWEDomainWarningBody": {
+    "message": "网站（$1）要求您登录到错误的域名。这可能是网络钓鱼攻击。",
+    "description": "$1 represents the website domain"
+  },
+  "SIWELabelChainID": {
+    "message": "链ID："
+  },
+  "SIWELabelExpirationTime": {
+    "message": "到期时间："
+  },
+  "SIWELabelIssuedAt": {
+    "message": "发行于："
+  },
+  "SIWELabelMessage": {
+    "message": "消息："
+  },
+  "SIWELabelNonce": {
+    "message": "Nonce："
+  },
+  "SIWELabelNotBefore": {
+    "message": "不早于："
+  },
+  "SIWELabelRequestID": {
+    "message": "请求ID："
+  },
+  "SIWELabelResources": {
+    "message": "资源：$1",
+    "description": "$1 represents the number of resources"
+  },
+  "SIWELabelURI": {
+    "message": "URI："
+  },
+  "SIWELabelVersion": {
+    "message": "版本："
+  },
+  "SIWESiteRequestSubtitle": {
+    "message": "此网站正在请求使用以下登录方式："
+  },
+  "SIWESiteRequestTitle": {
+    "message": "登录请求"
+  },
+  "SIWEWarningSubtitle": {
+    "message": "为表明您确认理解，请勾选："
+  },
+  "SIWEWarningTitle": {
+    "message": "您确定吗？"
   },
   "about": {
     "message": "关于"
@@ -120,6 +174,9 @@
   },
   "addAlias": {
     "message": "添加别名"
+  },
+  "addBlockExplorer": {
+    "message": "添加区块浏览器"
   },
   "addContact": {
     "message": "添加联系信息"
@@ -277,6 +334,9 @@
   "approveAndInstall": {
     "message": "批准并安装"
   },
+  "approveAndUpdate": {
+    "message": "批准并更新"
+  },
   "approveButtonText": {
     "message": "批准"
   },
@@ -293,8 +353,9 @@
   "approvedAsset": {
     "message": "已获批准的资产"
   },
-  "areYouDeveloper": {
-    "message": "您是开发人员吗？"
+  "approvedOn": {
+    "message": "于$1获得批准",
+    "description": "$1 is the approval date for a permission"
   },
   "areYouSure": {
     "message": "您确定吗？"
@@ -307,6 +368,9 @@
   },
   "assets": {
     "message": "资产"
+  },
+  "attemptSendingAssets": {
+    "message": "如果您试图将资产从一个网络直接发送到另一个网络，这可能会导致永久的资产损失。必须使用桥来进行。"
   },
   "attemptToCancel": {
     "message": "尝试取消吗？"
@@ -338,6 +402,9 @@
   "backToAll": {
     "message": "返回全部"
   },
+  "backup": {
+    "message": "备份"
+  },
   "backupApprovalInfo": {
     "message": "如果不慎丢失个人设备，忘记密码，需要重新安装 MetaMask，或者需在另一台设备上访问钱包，使用此助记词才能恢复您的钱包。"
   },
@@ -346,6 +413,12 @@
   },
   "backupNow": {
     "message": "立即备份"
+  },
+  "backupUserData": {
+    "message": "将您的数据备份"
+  },
+  "backupUserDataDescription": {
+    "message": "您可以将包含首选项和账户地址的用户设置备份到JSON文件中。"
   },
   "balance": {
     "message": "余额"
@@ -358,6 +431,9 @@
   },
   "basic": {
     "message": "基本"
+  },
+  "beCareful": {
+    "message": "请小心"
   },
   "betaMetamaskDescription": {
     "message": "MetaMask 深受数百万人信任，是一款可以让所有人进入 web3 世界的安全钱包。"
@@ -485,7 +561,7 @@
     "message": "免费取消兑换"
   },
   "cancellationGasFee": {
-    "message": "取消燃料费用"
+    "message": "取消燃料费"
   },
   "cancelled": {
     "message": "已取消"
@@ -510,6 +586,9 @@
     "message": "点击这里以通过 WebHID 连接您的 Ledger",
     "description": "Text that can be clicked to open a browser popup for connecting the ledger device via webhid"
   },
+  "clickToManuallyAdd": {
+    "message": "请点击这里，以手动添加代币。"
+  },
   "clickToRevealSeed": {
     "message": "点击此处以显示助记词"
   },
@@ -525,6 +604,16 @@
   },
   "confirm": {
     "message": "确认"
+  },
+  "confirmPageDialogSetApprovalForAll": {
+    "message": "您正在向$1授予访问权限，包括对您将来可能拥有的任何资产的访问权限。另一端的一方可以随时从您的钱包中转移NFT，无需询问您，直到您撤销此项批准。$2",
+    "description": "$1 and $2 are bolded translations 'confirmPageDialogSetApprovalForAllPlaceholder1' and 'confirmPageDialogSetApprovalForAllPlaceholder2'"
+  },
+  "confirmPageDialogSetApprovalForAllPlaceholder1": {
+    "message": "此合约中的所有NFT"
+  },
+  "confirmPageDialogSetApprovalForAllPlaceholder2": {
+    "message": "请谨慎行事。"
   },
   "confirmPassword": {
     "message": "确认密码"
@@ -620,16 +709,16 @@
     "message": "正在连接 Goerli 测试网络"
   },
   "connectingToKovan": {
-    "message": "正在连接到 Kovan 测试网络"
+    "message": "正在连接 Kovan 测试网络"
   },
   "connectingToMainnet": {
     "message": "正在连接到以太坊主网"
   },
   "connectingToRinkeby": {
-    "message": "正在连接到 Rinkeby 测试网络"
+    "message": "正在连接 Rinkeby 测试网络"
   },
   "connectingToRopsten": {
-    "message": "正在连接到 Ropsten 测试网络"
+    "message": "正在连接 Ropsten 测试网络"
   },
   "contactUs": {
     "message": "联系我们"
@@ -664,8 +753,20 @@
   "contractDeployment": {
     "message": "合约部署"
   },
+  "contractDescription": {
+    "message": "为了保护自己免受骗子欺诈，请花点时间核查合约细节。"
+  },
   "contractInteraction": {
     "message": "合约交互"
+  },
+  "contractRequestingSpendingCap": {
+    "message": "合约请求支出上限"
+  },
+  "contractTitle": {
+    "message": "合约细节"
+  },
+  "contractToken": {
+    "message": "代币合约"
   },
   "convertTokenToNFTDescription": {
     "message": "我们检测到该资产是NFT。Metamask现在完全原生支持NFT。您想将它从您的代币列表中删除并将它添加为NFT吗？"
@@ -750,13 +851,16 @@
   },
   "customGasSettingToolTipMessage": {
     "message": "使用$1来定制燃料价格。如果您不熟悉这可能会引起混淆。操作风险自付。",
-    "description": "$1 is key 'advanced' (text: 'Advanced') separated here so that it can be passed in with bold fontweight"
+    "description": "$1 is key 'advanced' (text: 'Advanced') separated here so that it can be passed in with bold font-weight"
   },
   "customGasSubTitle": {
     "message": "提升费用可能会缩短处理时间，但不能保证。"
   },
   "customSpendLimit": {
     "message": "自定义消费限额"
+  },
+  "customSpendingCap": {
+    "message": "自定义支出上限"
   },
   "customToken": {
     "message": "自定义代币"
@@ -765,7 +869,10 @@
     "message": "代币检测在此网络上尚不可用。请手动导入代币并确保您信任它。了解 $1"
   },
   "customTokenWarningInTokenDetectionNetwork": {
-    "message": "手动导入代币前，请确保您信任它。了解 $1。"
+    "message": "手动导入代币前，请确保您信任它。了解 $1"
+  },
+  "customTokenWarningInTokenDetectionNetworkWithTDOFF": {
+    "message": "在导入代币之前，请确保该代币是您所信任的。了解如何避免$1。您还可以启用代币检测$2。"
   },
   "customerSupport": {
     "message": "客户支持"
@@ -836,7 +943,13 @@
   },
   "depositCrypto": {
     "message": "存入$1",
-    "description": "$1 represents the cypto symbol to be purchased"
+    "description": "$1 represents the crypto symbol to be purchased"
+  },
+  "deprecatedTestNetworksLink": {
+    "message": "了解详情"
+  },
+  "deprecatedTestNetworksMsg": {
+    "message": "由于以太坊的协议有变化：Rinkeby、Ropsten和Kovan测试网络可能无法可靠地工作，很快就会被弃用。"
   },
   "description": {
     "message": "描述"
@@ -1337,7 +1450,7 @@
     "message": "燃料选项"
   },
   "gasPrice": {
-    "message": "Gas 价格 (GWEI)"
+    "message": "Gas 价格（GWEI）"
   },
   "gasPriceExcessive": {
     "message": "您的燃料费设置得过高。请考虑降低金额。"
@@ -1481,7 +1594,7 @@
   },
   "highGasSettingToolTipMessage": {
     "message": "使用$1来覆盖网络流量因像流行的 NFT 丢弃而出现的剧增。",
-    "description": "$1 is key 'high' (text: 'Aggressive') separated here so that it can be passed in with bold fontweight"
+    "description": "$1 is key 'high' (text: 'Aggressive') separated here so that it can be passed in with bold font-weight"
   },
   "highLowercase": {
     "message": "高"
@@ -1529,6 +1642,12 @@
   "importNFTs": {
     "message": "添加收藏品"
   },
+  "importSelectedTokens": {
+    "message": "要导入所选代币吗？"
+  },
+  "importSelectedTokensDescription": {
+    "message": "只有您选择的代币才会出现在您的钱包中。您可以随时通过搜索隐藏的代币来导入它们。"
+  },
   "importTokenQuestion": {
     "message": "导入代币？"
   },
@@ -1554,6 +1673,9 @@
   "imported": {
     "message": "已导入",
     "description": "status showing that an account has been fully loaded into the keyring"
+  },
+  "inYourSettings": {
+    "message": "在设置中"
   },
   "infuraBlockedNotification": {
     "message": "MetaMask 无法连接到区块链主机。请检查可能的原因 $1。",
@@ -1787,7 +1909,7 @@
   },
   "lowGasSettingToolTipMessage": {
     "message": "使用$1等待较便宜的价格。时间估计远不准确，因为价格有些难以预测。",
-    "description": "$1 is key 'low' separated here so that it can be passed in with bold fontweight"
+    "description": "$1 is key 'low' separated here so that it can be passed in with bold font-weight"
   },
   "lowLowercase": {
     "message": "低"
@@ -1831,7 +1953,7 @@
   },
   "mediumGasSettingToolTipMessage": {
     "message": "使用 $1 按当前市场价格快速处理。",
-    "description": "$1 is key 'medium' (text: 'Market') separated here so that it can be passed in with bold fontweight"
+    "description": "$1 is key 'medium' (text: 'Market') separated here so that it can be passed in with bold font-weight"
   },
   "memo": {
     "message": "备注"
@@ -1949,6 +2071,10 @@
   },
   "name": {
     "message": "名称"
+  },
+  "nativeToken": {
+    "message": "此网络上的原生代币为$1。它是用于燃料费的代币。",
+    "description": "$1 represents the name of the native token on the current network"
   },
   "needCryptoInWallet": {
     "message": "要使用MetaMask与去中心化应用程序互动，您的钱包中需要有$1。",
@@ -2170,7 +2296,7 @@
   },
   "notifications10ActionText": {
     "message": "在设置中访问",
-    "description": "The 'call to action' on the button, or link, of the 'Visit in settings' notification. Upon clicking, users will be taken to settings page."
+    "description": "The 'call to action' on the button, or link, of the 'Visit in Settings' notification. Upon clicking, users will be taken to Settings page."
   },
   "notifications10DescriptionOne": {
     "message": "Ethereum Mainnet、Polygon、BSC 和 Avalanche 网络目前提供经改进的代币检测。 即将推出更多！"
@@ -2203,7 +2329,7 @@
     "message": "显示自定义网络列表"
   },
   "notifications13Description": {
-    "message": "您现在可以轻松添加以下热门自定义网络：Arbitrum、Avalanche、Binance Smart Chain、Fantom、Harmony、Optimism、Palm和Polygon！如需启用此功能，请转到“设置” -> “实验”，然后打开“显示自定义网络列表”！",
+    "message": "您现在可以轻松添加以下热门自定义网络：Arbitrum、Avalanche、Binance Smart Chain、Fantom、Harmony、Optimism、Palm和Polygon！如需启用此功能，请转到“设置 -> 实验项”，然后打开“显示自定义网络列表”！",
     "description": "Description of a notification in the 'See What's New' popup. Describes popular network feature."
   },
   "notifications13Title": {
@@ -2274,8 +2400,8 @@
     "description": "Title for a notification in the 'See What's New' popup. Notifies ledger users of the need to update firmware."
   },
   "notifications8ActionText": {
-    "message": "转到高级设置",
-    "description": "Description on an action button that appears in the What's New popup. Tells the user that if they click it, they will go to our Advanced Settings page."
+    "message": "转到“设置 > 高级”",
+    "description": "Description on an action button that appears in the What's New popup. Tells the user that if they click it, they will go to our Advanced settings page."
   },
   "notifications8DescriptionOne": {
     "message": "从 MetaMask v10.4.0 开始，您不再需要 Ledger Live 即可将您的 Ledger 设备连接到 Metamask。",
@@ -2311,9 +2437,12 @@
   "notificationsMarkAllAsRead": {
     "message": "将所有标记为已读"
   },
-  "numberOfNewTokensDetected": {
-    "message": "在此账户中发现 $1 新代币",
+  "numberOfNewTokensDetectedPlural": {
+    "message": "在此账户中找到$1枚新代币",
     "description": "$1 is the number of new tokens detected"
+  },
+  "numberOfNewTokensDetectedSingular": {
+    "message": "在此账户中找到1枚新代币"
   },
   "ofTextNofM": {
     "message": "/"
@@ -2394,8 +2523,8 @@
     "message": "全屏打开 MetaMask 以通过 WebHID 连接您的 ledger。",
     "description": "Shown to the user on the confirm screen when they are viewing MetaMask in a popup window but need to connect their ledger via webhid."
   },
-  "openSourceCode": {
-    "message": "检查源代码"
+  "openInBlockExplorer": {
+    "message": "在区块浏览器上打开"
   },
   "optional": {
     "message": "可选"
@@ -2469,6 +2598,12 @@
   "permissionRequestCapitalized": {
     "message": "权限请求"
   },
+  "permissionRequested": {
+    "message": "立即请求"
+  },
+  "permissionRevoked": {
+    "message": "在此更新中已撤销"
+  },
   "permission_accessNetwork": {
     "message": "访问互联网。",
     "description": "The description of the `endowment:network-access` permission."
@@ -2488,6 +2623,10 @@
   "permission_longRunning": {
     "message": "无限期运行。",
     "description": "The description for the `endowment:long-running` permission"
+  },
+  "permission_manageBip32Keys": {
+    "message": "在$1（$2）下控制您的账户和资产。",
+    "description": "The description for the `snap_getBip32Entropy_*` permission. $1 is a derivation path, e.g. 'm/44'/0'/0''. $2 is the elliptic curve name, e.g. 'secp256k1'."
   },
   "permission_manageBip44Keys": {
     "message": "控制您的“$1”账户和资产。",
@@ -2523,7 +2662,7 @@
   },
   "preferredLedgerConnectionType": {
     "message": "首选 Ledger 连接类型",
-    "description": "A header for a dropdown in the advanced section of settings. Appears above the ledgerConnectionPreferenceDescription message"
+    "description": "A header for a dropdown in Settings > Advanced. Appears above the ledgerConnectionPreferenceDescription message"
   },
   "preparingSwap": {
     "message": "正在准备交换......"
@@ -2701,6 +2840,18 @@
   "restore": {
     "message": "恢复"
   },
+  "restoreFailed": {
+    "message": "无法使用所提供的文件恢复数据"
+  },
+  "restoreSuccessful": {
+    "message": "您的数据已成功恢复"
+  },
+  "restoreUserData": {
+    "message": "恢复用户数据"
+  },
+  "restoreUserDataDescription": {
+    "message": "您可以使用以前备份的JSON文件来恢复包含首选项和账户地址的用户设置。"
+  },
   "restoreWalletPreferences": {
     "message": "已找到 $1 的数据备份。您想恢复您的钱包偏好设置吗？",
     "description": "$1 is the date at which the data was backed up"
@@ -2733,6 +2884,9 @@
   "revokeApproveForAllDescription": {
     "message": "通过撤销权限，以下$1将无法再访问您的$2",
     "description": "$1 is either key 'account' or 'contract', and $2 is either a string or link of a given token symbol or name"
+  },
+  "revokeSpendingCapTooltipText": {
+    "message": "本合约将无法再使用您当前或未来的任何代币。"
   },
   "rinkeby": {
     "message": "Rinkeby 测试网络"
@@ -3006,6 +3160,9 @@
   "signed": {
     "message": "已签名"
   },
+  "signin": {
+    "message": "登录"
+  },
   "simulationErrorMessageV2": {
     "message": "我们无法估算燃料。合约中可能存在错误，这笔交易可能会失败。"
   },
@@ -3040,10 +3197,24 @@
     "message": "安装Snap"
   },
   "snapInstallWarningCheck": {
-    "message": "请勾选全部以确认您理解。"
+    "message": "请勾选选项框以确认您理解。"
+  },
+  "snapInstallWarningCheckPlural": {
+    "message": "请勾选所有方框以确认您理解。"
+  },
+  "snapInstallWarningKeyAccess": {
+    "message": "您正在向snap \"$1\"授予$2的密钥访问权限。此操作不可撤销，并会向\"$1\"授予对您的$2账户和资产的控制权。在继续之前，请确保您信任\"$1\"。",
+    "description": "The first parameter is the name of the snap and the second one is the protocol"
   },
   "snapRequestsPermission": {
     "message": "此Snap正在请求以下权限："
+  },
+  "snapUpdate": {
+    "message": "更新Snap"
+  },
+  "snapUpdateExplanation": {
+    "message": "$1需要更新版本的snap。",
+    "description": "$1 is the dapp that is requesting an update to the snap."
   },
   "snaps": {
     "message": "Snap"
@@ -3210,7 +3381,7 @@
     "message": "交换就会失败"
   },
   "stxCancelledDescription": {
-    "message": "您的交易就会失败，并被取消，以保护您免于支付不必要的燃料费。"
+    "message": "您的交易可能失败并被取消，以保护您免于支付不必要的燃料费。"
   },
   "stxCancelledSubDescription": {
     "message": "再次尝试进行交换。下次我们会在这里保护您免受类似风险。 "
@@ -3492,6 +3663,9 @@
   "swapReviewSwap": {
     "message": "审查交换"
   },
+  "swapSearchNameOrAddress": {
+    "message": "搜索名称或粘贴地址"
+  },
   "swapSelect": {
     "message": "选择"
   },
@@ -3510,6 +3684,9 @@
   "swapSlippagePercent": {
     "message": "$1%",
     "description": "$1 is the amount of % for slippage"
+  },
+  "swapSlippageTooltip": {
+    "message": "如果价格于下单到订单确认期间发生变化，这被称为“滑点”。如果滑点超过“最大滑点”设置，您的兑换将会自动取消。"
   },
   "swapSource": {
     "message": "流动性来源"
@@ -3620,6 +3797,9 @@
   "switchToThisAccount": {
     "message": "切换到该账户"
   },
+  "switchedTo": {
+    "message": "您已切换到"
+  },
   "switchingNetworksCancelsPendingConfirmations": {
     "message": "切换网络将取消所有待处理的确认"
   },
@@ -3686,6 +3866,9 @@
   "themeDescription": {
     "message": "选择您喜欢的MetaMask主题。"
   },
+  "thingsToKeep": {
+    "message": "注意事项:"
+  },
   "thisWillCreate": {
     "message": "这将创建新的钱包和账户助记词"
   },
@@ -3704,7 +3887,7 @@
   },
   "toggleTestNetworks": {
     "message": "$1 测试网络",
-    "description": "$1 is a clickable link with text defined by the 'showHide' key. The link will open to the advanced settings where users can enable the display of test networks in the network dropdown."
+    "description": "$1 is a clickable link with text defined by the 'showHide' key. The link will open Settings > Advanced where users can enable the display of test networks in the network dropdown."
   },
   "token": {
     "message": "代币"
@@ -3733,14 +3916,23 @@
   "tokenDetectionAlertMessage": {
     "message": "代币检测目前适用于 $1. $2"
   },
-  "tokenDetectionToggleDescription": {
-    "message": "ConsenSys的代币API使用来自各种第三方的代币列表，汇总成一个代币列表。关闭它将会停止检测添加到您钱包中的新代币，但会保留搜索代币以导入的选项。"
+  "tokenDetectionDescription": {
+    "message": "ConsenSys的代币API汇集了来自各种第三方代币列表的一系列代币。启用后，代币即会在以太坊主网、Binance、Polygon和Avalanche成为可搜索，并会被自动检测。关闭后，您仍可以使用MetaMask的旧代币列表在以太坊主网上搜索代币。"
+  },
+  "tokenFoundTitle": {
+    "message": "找到1枚新代币"
   },
   "tokenId": {
     "message": "代币 ID"
   },
   "tokenList": {
     "message": "代币列表："
+  },
+  "tokenScamSecurityRisk": {
+    "message": "代币欺诈和安全风险。"
+  },
+  "tokenShowUp": {
+    "message": "您的代币可能不会自动显示在您的钱包中。"
   },
   "tokenSymbol": {
     "message": "代币符号"
@@ -3828,7 +4020,7 @@
     "message": "交易费"
   },
   "transactionHistoryBaseFee": {
-    "message": "基本费用 (GWEI)"
+    "message": "基本费用（GWEI）"
   },
   "transactionHistoryL1GasLabel": {
     "message": "1层燃料费总计"
@@ -3843,7 +4035,7 @@
     "message": "每单位燃料的最大费用"
   },
   "transactionHistoryPriorityFee": {
-    "message": "优先费用 (GWEI)"
+    "message": "优先费用（GWEI）"
   },
   "transactionHistoryTotalGasFee": {
     "message": "燃料费总额"
@@ -3936,8 +4128,12 @@
     "message": "即将进入去中心化网络"
   },
   "unrecognizedChain": {
-    "message": "这个自定义网络无法识别。我们建议您在继续操作之前 $1",
+    "message": "该自定义网络无法识别",
     "description": "$1 is a clickable link with text defined by the 'unrecognizedChanLinkText' key. The link will open to instructions for users to validate custom network details."
+  },
+  "unrecognizedProtocol": {
+    "message": "$1（未识别的协议）",
+    "description": "Shown when the protocol is unknown by the extension. $1 is the protocol code."
   },
   "unsendableAsset": {
     "message": "当前不支持发送可收藏的 (ERC-721) 代币",
@@ -4055,6 +4251,10 @@
   },
   "warning": {
     "message": "警告"
+  },
+  "warningTooltipText": {
+    "message": "$1 合约可能会花费您的全部代币余额，无需进一步通知或同意。请自定义较低的支出上限以保护自己。",
+    "description": "$1 is a fa-exclamation-circle icon with text 'Be careful' in 'warning' colour"
   },
   "weak": {
     "message": "弱"
